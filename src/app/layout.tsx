@@ -30,25 +30,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}
-        suppressHydrationWarning
-    
-    >
+    <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider
-        attribute={'class'}
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
-
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
         >
-
-        {children}
-        <Toaster/>
+          {children}
+          <Toaster />
         </ThemeProvider>
-       
       </body>
     </html>
   );
