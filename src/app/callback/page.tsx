@@ -1,30 +1,12 @@
-"use client"
 
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { useAuth } from "@clerk/nextjs"
+import { onAuthenticateUser } from '@/actions/user'
+import React from 'react'
 
-export default function CallbackPage() {
-  const router = useRouter()
-  const { isLoaded, isSignedIn } = useAuth()
 
-  useEffect(() => {
-    if (isLoaded) {
-      if (isSignedIn) {
-        // Redirect to dashboard or home after successful auth
-        router.replace("/")
-      } else {
-        router.replace("/sign-in")
-      }
-    }
-  }, [isLoaded, isSignedIn, router])
+const AuthCallbackPage = async () => {
 
-  return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-        <p className="text-muted-foreground text-sm">Redirecting...</p>
-      </div>
-    </div>
-  )
+  const auth = await onAuthenticateUser()
+  return (<div> AuthCallbackPage</div>)
 }
+
+export default AuthCallbackPage
