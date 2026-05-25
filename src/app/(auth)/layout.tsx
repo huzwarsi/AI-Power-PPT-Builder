@@ -7,7 +7,7 @@ type Props = {
 
 const layout = ({ children }: Props) => {
   return (
-    <div suppressHydrationWarning className='w-full min-h-screen flex justify-center items-center'>
+    <div className='w-full min-h-screen flex justify-center items-center'>
 
       {children}
     </div>

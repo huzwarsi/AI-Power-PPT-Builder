@@ -38,7 +38,7 @@ export default function RootLayout({
 
       }}
     >
-      <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning>
+      <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning={true}>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           suppressHydrationWarning
@@ -49,7 +49,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <div suppressHydrationWarning className="w-full h-full">
+              {children}
+            </div>
             <Toaster />
           </ThemeProvider>
         </body>
