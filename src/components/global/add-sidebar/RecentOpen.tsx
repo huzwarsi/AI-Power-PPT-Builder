@@ -1,4 +1,5 @@
-import { SidebarGroup, SidebarGroupLabel } from '@/components/ui/sidebar'
+import { Button } from '@/components/ui/button'
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import { Project } from '@/generated/prisma'
 import React from 'react'
 
@@ -12,7 +13,25 @@ const RecentOpen = ({ recentProjects }: Props) => {
             <SidebarGroupLabel>
                 Recently Opened
             </SidebarGroupLabel>
-        </SidebarGroup>
+            <SidebarMenu>
+                {recentProjects.length > 0 ? < SidebarMenuItem key={'sad'}>
+                    <SidebarMenuButton
+                        asChild
+                        tooltip={'TESTING'}
+                        className='hover:bg-primary/5'
+                    >
+                        <Button
+                            variant={'Link'}
+
+                            className='text-xs items-center justify-start'
+                        >
+                            <span>Testing</span>
+                        </Button>
+
+                    </SidebarMenuButton>
+                </SidebarMenuItem> : "No Projects"}
+            </SidebarMenu>
+        </SidebarGroup >
     )
 }
 
