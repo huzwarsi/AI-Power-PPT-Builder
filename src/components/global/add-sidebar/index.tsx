@@ -36,7 +36,7 @@ const AppSidebar = ({ recentProjects, user, ...props }: { recentProjects: Projec
 
             <SidebarContent >
                 <NavMain items={data.NavMain} />
-                <RecentOpen />
+                <RecentOpen recentProjects={recentProjects} />
 
             </SidebarContent>
         </Sidebar>
