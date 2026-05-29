@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { onAuthenticateUser } from '@/actions/user'
 import AppSidebar from '@/components/global/add-sidebar'
 import { SidebarProvider } from '@/components/ui/sidebar'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
@@ -13,14 +14,16 @@ const Layout = async (props: Props) => {
 
     if (!auth.user) redirect('/sign-in')
 
-    // return( <div suppressHydrationWarning className="w-full min-h-screen">{props.children}</div>)
-
     return (
-        <SidebarProvider >
-            <AppSidebar>
+        <TooltipProvider delayDuration={0}>
+            <SidebarProvider>
+                <AppSidebar />
 
-            </AppSidebar>
-        </SidebarProvider>
+                <main className="flex-1 w-full min-h-screen">
+                    {props.children}
+                </main>
+            </SidebarProvider>
+        </TooltipProvider>
     )
 }
 

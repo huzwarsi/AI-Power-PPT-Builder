@@ -1,3 +1,5 @@
+'use client'
+
 import {
     Sidebar,
     SidebarContent,
@@ -5,10 +7,13 @@ import {
     SidebarHeader,
     SidebarMenuButton
 } from '@/components/ui/sidebar'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar' // 1. Logo ke liye import kiya
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Project } from '@/generated/prisma'
 import { User } from '@clerk/nextjs/server'
 import React from 'react'
+import NavMain from './nav-main'
+import { data } from '@/lib/constants'
+import RecentOpen from './RecentOpen'
 
 const AppSidebar = ({ recentProjects, user, ...props }: { recentProjects: Project[] } & { user: User } & React.ComponentProps<typeof Sidebar>) => {
     return (
@@ -17,7 +22,6 @@ const AppSidebar = ({ recentProjects, user, ...props }: { recentProjects: Projec
             className="max-w-[212px] !bg-[#121212]"
             {...props}
         >
-            {/* 2. HEADER SECTION (Logo Yahan hai) */}
             <SidebarHeader className="pt-6 px-3 pb-0">
                 <SidebarMenuButton size="lg" className="data-[state=open]:text-sidebar-accent-foreground">
                     <div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
@@ -30,11 +34,10 @@ const AppSidebar = ({ recentProjects, user, ...props }: { recentProjects: Projec
                 </SidebarMenuButton>
             </SidebarHeader>
 
-            {/* 3. CONTENT SECTION (Links ke liye - Header se bahar) */}
-            <SidebarContent>
-                <SidebarGroup>
-                    {/* Aapke baaki menu links yahan aayenge */}
-                </SidebarGroup>
+            <SidebarContent >
+                <NavMain items={data.NavMain} />
+                <RecentOpen />
+
             </SidebarContent>
         </Sidebar>
     )
