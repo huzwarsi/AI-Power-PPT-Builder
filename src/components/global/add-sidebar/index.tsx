@@ -3,6 +3,7 @@
 import {
     Sidebar,
     SidebarContent,
+    SidebarFooter,
     SidebarGroup,
     SidebarHeader,
     SidebarMenuButton
@@ -14,15 +15,16 @@ import React from 'react'
 import NavMain from './nav-main'
 import { data } from '@/lib/constants'
 import RecentOpen from './RecentOpen'
+import NavFooter from './NavFooter'
 
 const AppSidebar = ({ recentProjects, user, ...props }: { recentProjects: Project[] } & { user: User } & React.ComponentProps<typeof Sidebar>) => {
     return (
         <Sidebar
             collapsible="icon"
-            className="max-w-[212px] !bg-[#121212]"
+            className="max-w-[212px]"
             {...props}
         >
-            <SidebarHeader className="pt-6 px-3 pb-4">
+            <SidebarHeader className="pt-6 px-2 pb-4">
                 <SidebarMenuButton size="lg" className="data-[state=open]:text-sidebar-accent-foreground">
                     <div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
                         <Avatar className="h-10 w-10 rounded-full">
@@ -34,11 +36,14 @@ const AppSidebar = ({ recentProjects, user, ...props }: { recentProjects: Projec
                 </SidebarMenuButton>
             </SidebarHeader>
 
-            <SidebarContent >
+            <SidebarContent className='px-2 mt-10  gap-y-6' >
                 <NavMain items={data.NavMain} />
                 <RecentOpen recentProjects={recentProjects} />
-
             </SidebarContent>
+            <SidebarFooter>
+                <NavFooter />
+            </SidebarFooter>
+
         </Sidebar>
     )
 }

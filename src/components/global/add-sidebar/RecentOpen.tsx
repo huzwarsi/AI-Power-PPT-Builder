@@ -1,21 +1,32 @@
-import { Button } from '@/components/ui/button'
 import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import { Project } from '@/generated/prisma'
+import { useSlideStore } from '@/store/useSlideStore'
 import { JsonValue } from '@prisma/client/runtime/client'
+import { useRouter } from 'next/navigation'
 import React from 'react'
+import { toast } from 'sonner'
 
 type Props = {
     recentProjects: Project[]
 }
 
 const RecentOpen = ({ recentProjects }: Props) => {
+    const router = useRouter()
+    const { setSlides } = useSlideStore()
 
     const btnHandler = (ProjectId: string, slides: JsonValue) => {
+        if (!ProjectId || slides) {
 
-        console.log("Project Clicked:", ProjectId)
+            toast.error('Project not Found', {
+                description: 'Please try again',
+            })
+            return
+        }
+        setSlides(JSON.parse(JSON.stringify(slides)))
+
+        router.push(`/presentation/${ProjectId}`)
     }
 
-    if (recentProjects.length === 0) return null
 
     return (
         <SidebarGroup>
@@ -24,24 +35,30 @@ const RecentOpen = ({ recentProjects }: Props) => {
             </SidebarGroupLabel>
             <SidebarMenu>
 
-                {recentProjects.map((item) => (
-                    <SidebarMenuItem key={item.id}>
+                {recentProjects.length === 0 ? (
+                    <SidebarMenuItem>
                         <SidebarMenuButton
-                            asChild
-                            tooltip={item.title || 'Project'}
-                            className='hover:bg-primary/5'
+                            tooltip="Test Project"
+                            className='hover:bg-primary/5 text-xs w-full justify-start font-normal px-2'
+                            onClick={() => btnHandler("dummy-id", {})}
                         >
-                            <Button
-                                variant='ghost'
-                                className='text-xs w-full justify-start font-normal px-2'
-                                onClick={() => btnHandler(item.id, item.slides)}
-                            >
-
-                                <span className="truncate">{item.title || "Untitled Project"}</span>
-                            </Button>
+                            <span className="truncate">Test Project</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
-                ))}
+                ) : (
+                    recentProjects.map((item) => (
+                        <SidebarMenuItem key={item.id}>
+                            <SidebarMenuButton
+                                tooltip={item.title || 'Project'}
+                                className='hover:bg-primary/5 text-xs w-full justify-start font-normal px-2'
+                                onClick={() => btnHandler(item.id, item.slides)}
+                            >
+                                <span className="truncate">{item.title || "Untitled Project"}</span>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    ))
+                )}
+
             </SidebarMenu>
         </SidebarGroup>
     )
