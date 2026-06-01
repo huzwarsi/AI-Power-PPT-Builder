@@ -21,7 +21,7 @@ const AppSidebar = ({ recentProjects, user, ...props }: { recentProjects: Projec
     return (
         <Sidebar
             collapsible="icon"
-            className="max-w-[212px]"
+            className="max-w-[212px] "
             {...props}
         >
             <SidebarHeader className="pt-6 px-2 pb-4">
