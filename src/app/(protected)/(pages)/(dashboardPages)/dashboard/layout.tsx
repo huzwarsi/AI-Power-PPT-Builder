@@ -28,12 +28,10 @@ const Layout = async ({ children }: Props) => {
                     recentProjects={recentProjects.data || []}
                 />
                 <SidebarInset>
-                    <UpperInfoBar user={checkUser.user} >{children}</UpperInfoBar>
-
-                </SidebarInset>
-                <main className="flex-1 w-full min-h-screen overflow-y-auto">
+                    <UpperInfoBar user={checkUser.user} />
                     {children}
-                </main>
+                </SidebarInset>
+
             </SidebarProvider>
         </TooltipProvider>
     )
