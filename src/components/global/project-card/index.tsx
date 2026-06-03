@@ -5,6 +5,7 @@ import { JsonValue } from '@prisma/client/runtime/client';
 import motion from 'framer-motion'
 import { useRouter } from 'next/navigation';
 import React from 'react'
+import ThumbnailPreview from './Thumbnail-preview';
 
 type Props = {
     projectId: string
@@ -41,6 +42,8 @@ const ProjectCard = ({
                 className="relative aspect-[16/10] overflow-hidden rounded-lg cursor-pointer"
                 onClick={handleNavigation}
             >
+
+                <ThumbnailPreview />
             </div>
 
         </motion.div>
