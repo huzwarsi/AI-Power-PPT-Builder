@@ -1,8 +1,8 @@
 "use client";
-import { itemVariants } from '@/lib/constants';
+import { itemVariants, themes } from '@/lib/constants';
 import { useSlideStore } from '@/store/useSlideStore';
 import { JsonValue } from '@prisma/client/runtime/client';
-import motion from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import ThumbnailPreview from './Thumbnail-preview';
@@ -14,12 +14,13 @@ type Props = {
     src: string
     isDelete?: boolean
     slideData: JsonValue
+    themeName: string
 
 
 }
 
 const ProjectCard = ({
-    projectId, title, createdAt, slideData, src, isDelete
+    projectId, title, createdAt, slideData, src, isDelete, themeName
 }: Props) => {
 
     const { setSlides } = useSlideStore()
@@ -29,6 +30,8 @@ const ProjectCard = ({
         router.push(`/presentaion/${projectId}`)
 
     }
+
+    const theme = themes.find((theme) => theme.name === themeName || theme[0])
 
     return (
 
@@ -43,7 +46,7 @@ const ProjectCard = ({
                 onClick={handleNavigation}
             >
 
-                <ThumbnailPreview />
+                <ThumbnailPreview theme={theme} />
             </div>
 
         </motion.div>

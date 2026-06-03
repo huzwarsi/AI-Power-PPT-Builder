@@ -70,8 +70,6 @@ export interface ContentItem {
     isTransparent?: boolean
 }
 
-
-
 export interface Theme {
     name: string;
     fontFamily: string;
