@@ -4,9 +4,10 @@ import { useSlideStore } from '@/store/useSlideStore';
 import { JsonValue } from '@prisma/client/runtime/client';
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation';
-import React from 'react'
+import React, { useState } from 'react'
 import ThumbnailPreview from './Thumbnail-preview';
 import { timeAgo } from '@/lib/utils';
+import AlertDialogBox from '../AlertDialogBox';
 
 type Props = {
     projectId: string
@@ -23,6 +24,9 @@ type Props = {
 const ProjectCard = ({
     projectId, title, createdAt, slideData, src, isDelete, themeName
 }: Props) => {
+
+    const [loading, setLoading] = useState(false)
+    const [open, setOpen] = useState(false)
 
     const { setSlides } = useSlideStore()
     const router = useRouter()
@@ -64,7 +68,20 @@ const ProjectCard = ({
                             className='text-sm text-muted-foreground' suppressHydrationWarning  >
                             {timeAgo(createdAt)}
                         </p>
-                        {isDelete ? <AlertDialogBox: ''}
+                        {/* {isDelete ? ( */}
+                        <AlertDialogBox
+                            className='bg-green-500 test-white dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700'
+                            description='This will recover yor project and restore your data.'
+                            loading={loading}
+                            open={open}
+                        >
+
+
+                        </AlertDialogBox>
+
+                        {/* ): (
+                            ''
+                        )} */}
                     </div>
                 </div>
 
