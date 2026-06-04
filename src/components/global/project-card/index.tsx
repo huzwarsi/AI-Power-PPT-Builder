@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import ThumbnailPreview from './Thumbnail-preview';
+import { timeAgo } from '@/lib/utils';
 
 type Props = {
     projectId: string
@@ -31,7 +32,7 @@ const ProjectCard = ({
 
     }
 
-    const theme = themes.find((theme) => theme.name === themeName || theme[0])
+    const theme = themes.find((t) => t.name === themeName) || themes[0]
 
     return (
 
@@ -46,9 +47,28 @@ const ProjectCard = ({
                 onClick={handleNavigation}
             >
 
-                <ThumbnailPreview theme={theme} />
-            </div>
+                <ThumbnailPreview theme={theme}
+                // slide={slideData ? JSON.parse(JSON.stringify(slideData))?.[0] : undefined}
+                />
 
+
+            </div>
+            <div className='w-full'>
+                <div className='space-y-1'>
+                    <h3 className='font-semibold text-base text-primary line-clamp-1'>
+
+                        {title}
+                    </h3>
+                    <div className='flex w-full justify-between items-center gap-2'>
+                        <p
+                            className='text-sm text-muted-foreground' suppressHydrationWarning  >
+                            {timeAgo(createdAt)}
+                        </p>
+                        {isDelete ? <AlertDialogBox: ''}
+                    </div>
+                </div>
+
+            </div>
         </motion.div>
     )
 
