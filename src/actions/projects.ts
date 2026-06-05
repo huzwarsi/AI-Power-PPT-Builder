@@ -70,3 +70,67 @@ export const getRecentProjects = async () => {
 
     }
 }
+
+export const recoverProject = async (projectId: string) => {
+
+    try {
+        const checkUser = await onAuthenticateUser()
+
+        if (checkUser.status !== 200 || !checkUser.user) {
+            return { status: 403, error: 'User Not Authenticated' }
+        }
+
+        const updatedProject = await client.project.update({
+            where: {
+                id: projectId,
+            },
+            data: {
+                isDeleted: false
+            },
+
+        })
+        if (!updatedProject) {
+            return { status: 500, error: 'Failed to recover Project' }
+
+        }
+
+        return { status: 200, data: updatedProject }
+
+    } catch (error) {
+        console.log('🔴 ERROR', error)
+        return { status: 500, error: 'Internal Server error' }
+    }
+}
+
+
+
+
+export const DeleteProject = async (projectId: string) => {
+    try {
+        const checkUser = await onAuthenticateUser()
+
+        if (checkUser.status !== 200 || !checkUser.user) {
+            return { status: 403, error: 'User Not Authenticated' }
+        }
+
+        const updatedProject = await client.project.update({
+            where: {
+                id: projectId,
+            },
+            data: {
+                isDeleted: true
+            },
+
+        })
+        if (!updatedProject) {
+            return { status: 500, error: 'Failed to delete Project' }
+
+        }
+
+        return { status: 200, data: updatedProject }
+
+    } catch (error) {
+        console.log('🔴 ERROR', error)
+        return { status: 500, error: 'Internal Server error' }
+    }
+}
