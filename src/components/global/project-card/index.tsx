@@ -126,9 +126,10 @@ const ProjectCard = ({
                 onClick={handleNavigation}
             >
 
-                <ThumbnailPreview theme={theme}
-                // slide={slideData ? JSON.parse(JSON.stringify(slideData))?.[0] : undefined}
-                />
+                {/* <ThumbnailPreview theme={theme} */}
+
+                {/* // slide={slideData ? JSON.parse(JSON.stringify(slideData))?.[0] : undefined} */}
+                {/* /> */}
 
 
             </div>
