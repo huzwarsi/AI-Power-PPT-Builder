@@ -16,9 +16,9 @@ type Props = {
     projectId: string
     title: string
     createdAt: string
+    themeName: string
     isDelete?: boolean
     slideData: JsonValue
-    themeName: string
 
 
 }
