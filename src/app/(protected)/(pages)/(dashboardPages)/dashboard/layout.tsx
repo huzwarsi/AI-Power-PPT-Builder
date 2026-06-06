@@ -6,10 +6,11 @@ import AppSidebar from '@/components/global/add-sidebar'
 import UpperInfoBar from '@/components/global/upper-info-bar'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { User } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
-type Props = { children: React.ReactNode }
+type Props = { user: User }
 
 const Layout = async ({ children }: Props) => {
 
@@ -29,7 +30,7 @@ const Layout = async ({ children }: Props) => {
                 />
                 <SidebarInset>
                     <UpperInfoBar user={checkUser.user} />
-                    {children}
+                    <div className='p-4'>{children}</div>
                 </SidebarInset>
 
             </SidebarProvider>
