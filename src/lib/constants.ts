@@ -65,6 +65,28 @@ export const itemVariants = {
 
 export const themes: Theme[] = [
     {
+        name: 'Creative_Premium',
+        fontFamily: '"Space Grotesk", sans-serif',
+
+        backgroundColor: '#000000',
+        fontColor: '#ffffff',
+
+        slideBackgroundColor: '#000000',
+        accentColor: '#ff7b54',
+        gradientBackground: 'linear-gradient(135deg, #ff7b54 0%, #ff5252 100%)',
+
+        sidebarColor: '#000000',
+        navbarColor: '#000000',
+        type: 'dark',
+
+        // Cards ke liye
+        cardBackgroundColor: '#ffffff',
+        cardTextColor: '#000000',
+        cardBorderColor: '#000000',
+        cardHighlightGradient: 'linear-gradient(135deg, #ff7b54 0%, #ff5252 100%)',
+    }
+    ,
+    {
         name: 'Modern',
         fontFamily: '"Inter", sans-serif',
         backgroundColor: '#ffffff',
@@ -207,5 +229,29 @@ export const themes: Theme[] = [
         sidebarColor: '#000000',
         navbarColor: '#000000',
         type: 'dark',
+    },
+]
+
+
+
+export const CreatePageCard = [
+    {
+        title: 'Use a',
+        highlightedText: 'Template',
+        description: 'Write a prompt and leave everything else for us to handle',
+        type: 'template',
+    },
+    {
+        title: 'Generate with',
+        highlightedText: 'Creative AI',
+        description: 'Write a prompt and leave everything else for us to handle',
+        type: 'creative-ai',
+        highlight: true,
+    },
+    {
+        title: 'Start from',
+        highlightedText: 'Scratch',
+        description: 'Write a prompt and leave everything else for us to handle',
+        type: 'create-scratch',
     },
 ]

@@ -6,11 +6,14 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // tailwind.config.ts
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      backgroundImage: {
+        'vivid-gradient': 'linear-gradient(135deg, #ff7b54 0%, #ff5252 100%)',
+      },
+      textColor: {
+        'vivid': '#ff7b54',
       },
     },
   },

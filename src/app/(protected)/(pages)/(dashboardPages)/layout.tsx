@@ -1,6 +1,5 @@
 import { getRecentProjects } from '@/actions/projects'
 import { onAuthenticateUser } from '@/actions/user'
-import layout from '@/app/(auth)/layout'
 import AppSidebar from '@/components/global/add-sidebar'
 import UpperInfoBar from '@/components/global/upper-info-bar'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
@@ -38,4 +37,4 @@ async function Layout({ children }: Props) {
 }
 
 
-export default layout
+export default Layout

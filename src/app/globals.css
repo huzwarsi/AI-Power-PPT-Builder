@@ -109,8 +109,8 @@ body {
 }
 
 .text-vivid {
-    background: linear-gradient(180deg, #F55C7A 0%, #F6BC66 100%);
-    background-clip: text;
+    background: linear-gradient(135deg, #ff7b54 0%, #ff5252 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
