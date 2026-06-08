@@ -6,7 +6,7 @@ type Props = {}
 
 const page = (props: Props) => {
     return (
-        <main className='w-full h-full pt-6'>
+        <main className='w-full h-full pt-6 '>
             <Suspense fallback={<CreatePageSkeleton />}></Suspense>
             <RenderPage />
         </main>
