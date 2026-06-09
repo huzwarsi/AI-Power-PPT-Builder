@@ -3,6 +3,7 @@ import { containerVariants, CreatePageCard, itemVariants } from '@/lib/constants
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import RecentPrompts from './GenerateAI/RecentPrompts'
 
 type Props = {
     onSelectOption: (option: string) => void
@@ -102,6 +103,8 @@ const CreatePage = ({ onSelectOption }: Props) => {
                     </motion.div>
                 ))}
             </motion.div>
+
+            <RecentPrompts />
         </motion.div>
     )
 }
