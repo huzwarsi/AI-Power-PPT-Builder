@@ -1,20 +1,23 @@
-import { Slide } from '@/lib/types'
+import { OutlineCard } from '@/lib/types';
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-interface SlideState {
-    slides: Slide[]
-    setSlides: (slides: Slide[]) => void
+type CreativeAIStore = {
+    outlines: OutlineCard[] | [];
+    addMultipleOutlines: (outlines: OutlineCard[]) => void;
+    addOutline: (outline: OutlineCard) => void;
 }
 
-export const useSlideStore = create(
-    persist<SlideState>(
-        (set) => ({
-            slides: [],
-            setSlides: (slides: Slide[]) => set({ slides }),
-        }),
-        {
-            name: 'slides-storage',
-        }
-    )
+const useCreativeAIStore = create<CreativeAIStore>()(
+    persist((set) => ({
+        outlines: [],
+        addOutline: (outline: OutlineCard) => {
+            set((state) => ({
+                outlines: [outline, ...state.outlines],
+            }));
+        },
+        addMultipleOutlines: () => { }
+    }), {
+        name: "creative-ai", // storage key for the persisted store
+    })
 )
